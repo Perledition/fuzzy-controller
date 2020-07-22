@@ -9,13 +9,51 @@ import warnings
 
 # assumes static gradients / slope
 # TODO: Documentation
-# TODO: function creator
 # TODO: get visuals
-class MembershipValidator:
+class MembershipValidator(object):
 
-    def __init__(self, category: dict):
+    def __init__(self, category: dict, category_name="undefined"):
         self.category = category
+        self.category_name = category_name
         self.slopes = self._get_slopes()
+        self.max, self.min = self._find_interval()
+        self._category_normalizer()
+
+    def _value_normalizer(self, value):
+        # use a min max normalizer to center the values around 0 and 1
+        return (value - self.min)/(self.max-self.min)
+
+    def _category_normalizer(self):
+        for member, ranges in self.category.items():
+            for key, value in ranges.items():
+                ranges[key] = self._value_normalizer(value)
+
+    @staticmethod
+    def is_smaller(curr: float, new: float):
+        return True if new < curr else False
+
+    @staticmethod
+    def is_larger(curr: float, new: float):
+        return True if new > curr else False
+
+    def _find_interval(self):
+
+        # initialize default values for max and min
+        value_max = 0
+        value_min = 0
+
+        # loop over the complete category to find the max and min values
+        for _, ranges in self.category.items():
+
+            # check for new min value
+            if self.is_smaller(value_min, ranges["lower_end"]):
+                value_min = ranges["lower_end"]
+
+            # check for new max value
+            if self.is_larger(value_max, ranges["upper_end"]):
+                value_max = ranges["upper_end"]
+
+        return value_max, value_min
 
     def _get_slopes(self):
 
@@ -73,8 +111,10 @@ class MembershipValidator:
                 membership = (value-lower_border) * m
             elif value == center:
                 membership = 1.0
-            elif (value > center) and (value < upper_border):
+            elif (value > center) and (value < upper_border) and (center != lower_border):
                 membership = 1 - ((value - center) * m)
+            elif (value > center) and (value < upper_border) and (center == lower_border):
+                membership = 1 + ((value-center) * m)
             else:
                 membership = 0.0
 
@@ -101,7 +141,8 @@ class MembershipValidator:
         results = return_structure(return_type)
 
         # generate membership value for each function
-        for function, membership in self._generate_memberships(value):
+        to_check = self._value_normalizer(value)
+        for function, membership in self._generate_memberships(to_check):
             if return_type == "dict":
                 results[function] = membership
 
@@ -114,14 +155,4 @@ class MembershipValidator:
         pass
 
 
-# test
-category = {
-    "very_low": {"lower_end": 0, "center": 0, "upper_end": 50},
-    "low": {"lower_end": 0, "center": 50, "upper_end": 100},
-    "medium": {"lower_end": 50, "center": 100, "upper_end": 150},
-    "high": {"lower_end": 100, "center": 150, "upper_end": 200},
-    "very_high": {"lower_end": 150, "center": 200, "upper_end": 200}
-}
 
-mv = MembershipValidator(category)
-print(mv.get_memberships(90, return_type="list"))
