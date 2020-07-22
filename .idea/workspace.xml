@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f724a5af-a7e6-4eca-8f85-989be012560a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/fuzzy-controller.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/fuzzy-controller.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pipfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/controller/fuzzy.py" beforeDir="false" afterPath="$PROJECT_DIR$/components/controller/fuzzy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/controller/membership.py" beforeDir="false" afterPath="$PROJECT_DIR$/components/controller/membership.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment/simple_car_travel.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment/simple_car_travel.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,10 +37,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Maxim\PycharmProjects\fuzzy-controller\experiment" />
       <recent name="$PROJECT_DIR$/components" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.fuzzy">
+  <component name="RunManager" selected="Python.simple_car_travel">
     <configuration name="fuzzy" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="fuzzy-controller" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -88,8 +86,31 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="simple_car_travel" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="fuzzy-controller" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/experiment" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/experiment/simple_car_travel.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.simple_car_travel" />
         <item itemvalue="Python.fuzzy" />
         <item itemvalue="Python.membership" />
       </list>
@@ -105,7 +126,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1595333317479</updated>
-      <workItem from="1595412179115" duration="12000000" />
+      <workItem from="1595412179115" duration="12264000" />
+      <workItem from="1595443298751" duration="3509000" />
     </task>
     <servers />
   </component>
@@ -117,30 +139,30 @@
       <screen x="0" y="40" width="3440" height="1400" />
     </state>
     <state x="1344" y="630" key="FileChooserDialogImpl/0.40.3440.1400@0.40.3440.1400" timestamp="1595414669364" />
-    <state width="2463" height="599" key="GridCell.Tab.0.bottom" timestamp="1595431616738">
+    <state width="2465" height="415" key="GridCell.Tab.0.bottom" timestamp="1595446467283">
       <screen x="0" y="40" width="3440" height="1400" />
     </state>
     <state width="1659" height="159" key="GridCell.Tab.0.bottom/0.23.1680.973@0.23.1680.973" timestamp="1595396565784" />
     <state width="1687" height="275" key="GridCell.Tab.0.bottom/0.23.3440.1363@0.23.3440.1363" timestamp="1595347820828" />
-    <state width="2463" height="599" key="GridCell.Tab.0.bottom/0.40.3440.1400@0.40.3440.1400" timestamp="1595431616738" />
-    <state width="2463" height="599" key="GridCell.Tab.0.center" timestamp="1595431616738">
+    <state width="2465" height="415" key="GridCell.Tab.0.bottom/0.40.3440.1400@0.40.3440.1400" timestamp="1595446467283" />
+    <state width="2465" height="415" key="GridCell.Tab.0.center" timestamp="1595446467283">
       <screen x="0" y="40" width="3440" height="1400" />
     </state>
     <state width="1659" height="159" key="GridCell.Tab.0.center/0.23.1680.973@0.23.1680.973" timestamp="1595396565784" />
     <state width="1687" height="275" key="GridCell.Tab.0.center/0.23.3440.1363@0.23.3440.1363" timestamp="1595347820827" />
-    <state width="2463" height="599" key="GridCell.Tab.0.center/0.40.3440.1400@0.40.3440.1400" timestamp="1595431616738" />
-    <state width="2463" height="599" key="GridCell.Tab.0.left" timestamp="1595431616738">
+    <state width="2465" height="415" key="GridCell.Tab.0.center/0.40.3440.1400@0.40.3440.1400" timestamp="1595446467283" />
+    <state width="2465" height="415" key="GridCell.Tab.0.left" timestamp="1595446467283">
       <screen x="0" y="40" width="3440" height="1400" />
     </state>
     <state width="1659" height="159" key="GridCell.Tab.0.left/0.23.1680.973@0.23.1680.973" timestamp="1595396565784" />
     <state width="1687" height="275" key="GridCell.Tab.0.left/0.23.3440.1363@0.23.3440.1363" timestamp="1595347820826" />
-    <state width="2463" height="599" key="GridCell.Tab.0.left/0.40.3440.1400@0.40.3440.1400" timestamp="1595431616738" />
-    <state width="2463" height="599" key="GridCell.Tab.0.right" timestamp="1595431616738">
+    <state width="2465" height="415" key="GridCell.Tab.0.left/0.40.3440.1400@0.40.3440.1400" timestamp="1595446467283" />
+    <state width="2465" height="415" key="GridCell.Tab.0.right" timestamp="1595446467283">
       <screen x="0" y="40" width="3440" height="1400" />
     </state>
     <state width="1659" height="159" key="GridCell.Tab.0.right/0.23.1680.973@0.23.1680.973" timestamp="1595396565784" />
     <state width="1687" height="275" key="GridCell.Tab.0.right/0.23.3440.1363@0.23.3440.1363" timestamp="1595347820827" />
-    <state width="2463" height="599" key="GridCell.Tab.0.right/0.40.3440.1400@0.40.3440.1400" timestamp="1595431616738" />
+    <state width="2465" height="415" key="GridCell.Tab.0.right/0.40.3440.1400@0.40.3440.1400" timestamp="1595446467283" />
     <state x="1150" y="392" key="SettingsEditor" timestamp="1595414729569">
       <screen x="0" y="40" width="3440" height="1400" />
     </state>
@@ -148,6 +170,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/fuzzy_controller$membership.coverage" NAME="membership Coverage Results" MODIFIED="1595429546366" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/components/controller" />
-    <SUITE FILE_PATH="coverage/fuzzy_controller$fuzzy.coverage" NAME="fuzzy Coverage Results" MODIFIED="1595431616734" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/components/controller" />
+    <SUITE FILE_PATH="coverage/fuzzy_controller$fuzzy.coverage" NAME="fuzzy Coverage Results" MODIFIED="1595446365227" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/components/controller" />
+    <SUITE FILE_PATH="coverage/fuzzy_controller$simple_car_travel.coverage" NAME="simple_car_travel Coverage Results" MODIFIED="1595446467278" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/experiment" />
   </component>
 </project>
