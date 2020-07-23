@@ -49,10 +49,19 @@ settings = {
     "change_of_distance": change_of_distance
 }
 
-current = {"target_distance": 34, "driver_type": 33, "change_of_distance": 6.3}
+acceleration = {
+    "strong_negative": {"lower_end": -20, "center": -20, "upper_end": -5},
+    "negative": {"lower_end": -10, "center": -5, "upper_end": 0},
+    "zero": {"lower_end": -5, "center": 0, "upper_end": 5},
+    "positive": {"lower_end": 0, "center": 5, "upper_end": 10},
+    "strong_positive": {"lower_end": 5, "center": 10, "upper_end": 20},
+}
+
+current = {"target_distance": 77, "driver_type": 33, "change_of_distance": 6.3}
 
 fc = FuzzyDistanceController()
 fc.set_inputs(settings)
 fc.set_ruleset(ruleset)
+fc.set_output(acceleration)
 
 print(fc.run(current))

@@ -7,7 +7,7 @@ import pandas as pd
 
 # import project related modules
 from components.controller.membership import MembershipValidator
-
+from components.controller.activation import PolygonGravity
 
 # TODO: create min_function
 # TODO: create center of gravity for absolut -> softmax with weighted average output
@@ -23,6 +23,9 @@ class FuzzyDistanceController(object):
 
         # rule set applied for inference
         self.rules = None
+
+        # output space defined by user - needs to follow the same structure as input
+        self.output = None
 
     def _fuzzification(self, conditions: dict):
 
@@ -80,14 +83,26 @@ class FuzzyDistanceController(object):
 
         # filter subset of rules that match the perception - filter because the rest is not needed and can be ignored
         subset = self._get_rule_subset(perception)
-
         # iterate over the ruleset and check to which degree modus ponens is true
         # TODO: calculate min for each rule
+
+        valid_columns = list(perception.keys())
+        for column in valid_columns:
+
+            memberships = perception[column]
+            subset[f"{column}_value"] = subset.apply(lambda row: memberships[row[column]], axis=1)
+
+        subset["degree"] = subset.min(axis=1)
+
         # TODO: think about a solution how to solve the joint value defuzzification
 
+        result = subset.loc[:, ["acceleration", "degree"]].to_dict("r")
+        print(result)
         return dict()
 
     def _defuzzification(self):
+
+        # get_centroid(self, lower_end, upper_end, cut, slope, flat_side=(0, 0))
         pass
 
     def set_ruleset(self, rules: pd.DataFrame):
@@ -117,8 +132,18 @@ class FuzzyDistanceController(object):
             warnings.warn(f"setting inputs was not possible because of Error {exc}!")
             return False
 
-    def set_output(self):
-        pass
+    def set_output(self, output: dict, name: str):
+
+        # ensure variable type
+        assert type(output) is dict, "output must be dict and follow the needed structure"
+
+        try:
+            self.output = MembershipValidator(output, category_name=name)
+            return True
+
+        except Exception as exc:
+            warnings.warn(f"Error {exc} occured")
+            return False
 
     def run(self, inputs: dict):
         perception = self._fuzzification(inputs)

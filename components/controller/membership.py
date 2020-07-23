@@ -12,21 +12,47 @@ import warnings
 # TODO: get visuals
 class MembershipValidator(object):
 
-    def __init__(self, category: dict, category_name="undefined"):
+    def __init__(self, category: dict, category_name="undefined", is_output=False):
         self.category = category
         self.category_name = category_name
+        self.is_output = is_output
         self.slopes = self._get_slopes()
         self.max, self.min = self._find_interval()
         self._category_normalizer()
 
-    def _value_normalizer(self, value):
+    def _value_normalizer(self, value: float):
         # use a min max normalizer to center the values around 0 and 1
         return (value - self.min)/(self.max-self.min)
+
+    def denormalize_value(self, value: float):
+        # denormalize values to get exact values within the given range
+        return ((self.max - self.min) * value) + self.min
 
     def _category_normalizer(self):
         for member, ranges in self.category.items():
             for key, value in ranges.items():
                 ranges[key] = self._value_normalizer(value)
+
+    @staticmethod
+    def _is_flat(le: float, cen: float, ue: float):
+        if (le == cen) or (cen == ue):
+            return True
+        else:
+            return False
+
+    def get_member_coordinates(self, member_name: str):
+        assert self.is_output is True, "coordinates are only available for memberships declared as output"
+
+        results = list()
+        try:
+            member = self.category[member_name]
+            if member["lower_end"] == member["center"]:
+                p1 = 0
+            return (member["lower_end"], 0)
+
+        except KeyError as exc:
+            warnings.warn(f"{member_name} is not a valid member of {self.category_name}")
+            return tuple()
 
     @staticmethod
     def is_smaller(curr: float, new: float):
@@ -92,7 +118,7 @@ class MembershipValidator(object):
 
         return slopes
 
-    def _calculate_membership(self, function, value):
+    def _calculate_membership(self, function: str, value: float):
         try:
             # get slope, center and borders for the given function
             m = self.slopes[function]
@@ -124,14 +150,14 @@ class MembershipValidator(object):
             warnings.warn(f"{exc} found in calculating membership of {value} in function {function}, zero was assigned")
             return 0.0
 
-    def _generate_memberships(self, value):
+    def _generate_memberships(self, value: float):
 
         # iterate over all membership functions and calculate the membership "likelihood"
         for function in list(self.category.keys()):
             membership = self._calculate_membership(function, value)
             yield function, membership
 
-    def get_memberships(self, value, return_type="dict"):
+    def get_memberships(self, value: float, return_type="dict"):
 
         # ensure return_type is valid
         assert return_type in ["dict", "list"], "return type must be specified as dict or list"
