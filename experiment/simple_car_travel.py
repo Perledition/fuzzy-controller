@@ -4,10 +4,11 @@
 import pandas as pd
 
 # import project related modules
+from components.vehicle.bidirectional import Car
 from components.controller.fuzzy import FuzzyDistanceController
 
 df = pd.read_csv("ruleset_fuzzy_distance_controller.csv", index_col=0)
-print(df.head())
+# print(df.head())
 
 """
 input:
@@ -30,17 +31,17 @@ target_distance = {
 }
 
 driver_type = {
-    "aggressive": {"lower_end": 0, "center": 0, "upper_end": 50},
+    "aggressive": {"lower_end": 5, "center": 5, "upper_end": 50},
     "medium": {"lower_end": 25, "center": 50, "upper_end": 75},
     "defensive": {"lower_end": 50, "center": 75, "upper_end": 100}
 }
 
 change_of_distance = {
-    "strong_negative": {"lower_end": -20, "center": -20, "upper_end": -5},
+    "strong negative": {"lower_end": -20, "center": -20, "upper_end": -5},
     "negative": {"lower_end": -10, "center": -5, "upper_end": 0},
     "zero": {"lower_end": -5, "center": 0, "upper_end": 5},
     "positive": {"lower_end": 0, "center": 5, "upper_end": 10},
-    "strong_positive": {"lower_end": 5, "center": 10, "upper_end": 20},
+    "strong positive": {"lower_end": 5, "center": 10, "upper_end": 20},
 }
 
 settings = {
@@ -49,19 +50,24 @@ settings = {
     "change_of_distance": change_of_distance
 }
 
-acceleration = {
-    "strong_negative": {"lower_end": -20, "center": -20, "upper_end": -5},
+accel = {
+    "strong negative": {"lower_end": -20, "center": -20, "upper_end": -5},
     "negative": {"lower_end": -10, "center": -5, "upper_end": 0},
     "zero": {"lower_end": -5, "center": 0, "upper_end": 5},
     "positive": {"lower_end": 0, "center": 5, "upper_end": 10},
-    "strong_positive": {"lower_end": 5, "center": 10, "upper_end": 20},
+    "strong positive": {"lower_end": 5, "center": 10, "upper_end": 20},
 }
 
-current = {"target_distance": 77, "driver_type": 33, "change_of_distance": 6.3}
+current = {"target_distance": 20, "driver_type": 3, "change_of_distance": 16}
 
 fc = FuzzyDistanceController()
 fc.set_inputs(settings)
 fc.set_ruleset(ruleset)
-fc.set_output(acceleration)
+fc.set_output(accel, "acceleration")
 
 print(fc.run(current))
+
+# experiment for a duration of 20 seconds
+for i in range(0, 21):
+    car_lead = Car()
+    car_follow = Car()

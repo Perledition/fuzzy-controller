@@ -9,10 +9,6 @@ import pandas as pd
 from components.controller.membership import MembershipValidator
 from components.controller.activation import PolygonGravity
 
-# TODO: create min_function
-# TODO: create center of gravity for absolut -> softmax with weighted average output
-# TODO: return value
-
 
 class FuzzyDistanceController(object):
 
@@ -65,7 +61,8 @@ class FuzzyDistanceController(object):
             # set a list for the current category so members can be collected
             category_members[category] = list()
             for key, value in members.items():
-                if value > 0:
+
+                if abs(value) > 0:
                     category_members[category].append(key)
 
         # create a subset of the given rules - copy complete data set and filter afterwards to ensure
@@ -79,12 +76,9 @@ class FuzzyDistanceController(object):
         return subset
 
     def _inference(self, perception: dict):
-        print(perception)
 
         # filter subset of rules that match the perception - filter because the rest is not needed and can be ignored
         subset = self._get_rule_subset(perception)
-        # iterate over the ruleset and check to which degree modus ponens is true
-        # TODO: calculate min for each rule
 
         valid_columns = list(perception.keys())
         for column in valid_columns:
@@ -92,18 +86,55 @@ class FuzzyDistanceController(object):
             memberships = perception[column]
             subset[f"{column}_value"] = subset.apply(lambda row: memberships[row[column]], axis=1)
 
+        # get the min degree value for all categories of the AND rule
         subset["degree"] = subset.min(axis=1)
 
-        # TODO: think about a solution how to solve the joint value defuzzification
-
+        # create a set of fuzzy outputs [{"output category": "member", "degree": value of degree}, ...]
         result = subset.loc[:, ["acceleration", "degree"]].to_dict("r")
-        print(result)
-        return dict()
+        return result
 
-    def _defuzzification(self):
+    def _member_centroid_generator(self, fuzzy_results):
 
-        # get_centroid(self, lower_end, upper_end, cut, slope, flat_side=(0, 0))
-        pass
+        results = list()
+        for f_set in fuzzy_results:
+
+            # set variables - member name and degree to which the member is true
+            member = f_set[self.output.category_name]
+            degree = f_set["degree"]
+
+            # get the slope of the member and also the three points defining the coordinates
+            slope = self.output.slopes[member]
+            p1, p2, p3, flat_side = self.output.get_member_coordinates(member)
+            # get the lower and the upper border the the membership on the x axis
+            ue = max([x[0] for x in [p1, p2, p3]])
+            le = min([x[0] for x in [p1, p2, p3]])
+
+            # print(member, le, ue, slope, flat_side, degree, self.output.max, self.output.min)
+            # calculate the centroid of the given polygon area (defined through degree and cut on y axis)
+            centroid = PolygonGravity().get_centroid(le, ue, degree, slope, flat_side=flat_side)
+            results.append({"member": member, "degree": degree, "centroid": centroid})
+
+        return results
+
+    def _defuzzification(self, fuzzy_results):
+
+        # get the centroid of each member area, to make the output area usable as absolute value
+        centroid_data = self._member_centroid_generator(fuzzy_results)
+
+        for result in centroid_data:
+            # get an denormalize the x value of the centroid to get the output value for the original input range
+            result["output"] = self.output.denormalize_value(result["centroid"][0])
+
+        # print(centroid_data)
+        # create a weighted average over the results to return a single action
+        degree_sum = sum([x["degree"] for x in centroid_data])
+
+        action = 0
+        for result in centroid_data:
+            weight = result["degree"]/degree_sum
+            action += (weight * result["output"])
+
+        return action
 
     def set_ruleset(self, rules: pd.DataFrame):
 
@@ -138,7 +169,7 @@ class FuzzyDistanceController(object):
         assert type(output) is dict, "output must be dict and follow the needed structure"
 
         try:
-            self.output = MembershipValidator(output, category_name=name)
+            self.output = MembershipValidator(output, category_name=name, is_output=True)
             return True
 
         except Exception as exc:
@@ -148,6 +179,7 @@ class FuzzyDistanceController(object):
     def run(self, inputs: dict):
         perception = self._fuzzification(inputs)
         results = self._inference(perception)
+        return self._defuzzification(results)
 
 
 

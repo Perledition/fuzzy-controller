@@ -16,9 +16,10 @@ class MembershipValidator(object):
         self.category = category
         self.category_name = category_name
         self.is_output = is_output
-        self.slopes = self._get_slopes()
+
         self.max, self.min = self._find_interval()
         self._category_normalizer()
+        self.slopes = self._get_slopes()
 
     def _value_normalizer(self, value: float):
         # use a min max normalizer to center the values around 0 and 1
@@ -43,16 +44,18 @@ class MembershipValidator(object):
     def get_member_coordinates(self, member_name: str):
         assert self.is_output is True, "coordinates are only available for memberships declared as output"
 
-        results = list()
         try:
             member = self.category[member_name]
             if member["lower_end"] == member["center"]:
-                p1 = 0
-            return (member["lower_end"], 0)
+                return (member["center"], 0), (member["center"], 1), (member["upper_end"], 0), (1, 0)
+            elif member["center"] == member["upper_end"]:
+                return (member["lower_end"], 0), (member["upper_end"], 1), (member["upper_end"], 0), (0, 1)
+            else:
+                return (member["lower_end"], 0), (member["center"], 1), (member["upper_end"], 0), (0, 0)
 
         except KeyError as exc:
-            warnings.warn(f"{member_name} is not a valid member of {self.category_name}")
-            return tuple()
+            warnings.warn(f"{member_name} is not a valid member of {self.category_name}: {exc}")
+            return (), (), ()
 
     @staticmethod
     def is_smaller(curr: float, new: float):
@@ -91,9 +94,9 @@ class MembershipValidator(object):
             try:
 
                 # access the values from the category
-                min_value = values["lower_end"]
-                max_value = values["center"]
-                upper_min_value = values["upper_end"]
+                min_value = self._value_normalizer(values["lower_end"])
+                max_value = self._value_normalizer(values["center"])
+                upper_min_value = self._value_normalizer(values["upper_end"])
 
                 # calculate the lower the slope m for the given values
                 # ASSUMPTION: linear without slope change and lower_end is 0 on y axis while center is 1 on y axis

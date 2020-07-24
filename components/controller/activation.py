@@ -13,7 +13,8 @@ class PolygonGravity:
         self.min_height = min_height
         self.poly = None
 
-    def _solve_linear(self, y, m, intercept):
+    @staticmethod
+    def _solve_linear(y, m, intercept):
         return (y-intercept)/m, y
 
     def _calculate_corners(self, le, ue, cut, slope, side="left"):
@@ -38,6 +39,7 @@ class PolygonGravity:
             if side is 0:
                 # define intercept in order to be able to solve coordinates with linear function
                 b = -(slope*le)
+                print(b)
                 lower_point = (end, self.min_height)
                 upper_point = (self._solve_linear(cut, slope, b))
 
@@ -57,8 +59,8 @@ class PolygonGravity:
         return tuple(left_side + right_side)
 
     def _calculate_centroid(self):
-        x_list = [coor[0] for coor in self.poly]
-        y_list = [coor[1] for coor in self.poly]
+        x_list = [abs(coor[0]) for coor in self.poly]
+        y_list = [abs(coor[1]) for coor in self.poly]
         _len = len(self.poly)
 
         x = sum(x_list) / _len

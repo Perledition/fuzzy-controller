@@ -14,7 +14,7 @@ class Car:
         self.distance = 0
 
         # meter per second this is assumed to be constant
-        self.speed_increase = 5
+        self.speed_increase = 0
 
         # check if driver type is valid input
         assert driver_type in ["defensive", "aggressive"],\
