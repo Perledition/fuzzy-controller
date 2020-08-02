@@ -71,7 +71,8 @@ class FuzzyDistanceController(object):
 
         # create query conditions and filter the given data set for conditions
         for query in self._query_generator(category_members):
-            subset = subset.query(query)
+            if query != "":
+                subset = subset.query(query)
 
         return subset
 

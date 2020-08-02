@@ -39,7 +39,6 @@ class PolygonGravity:
             if side is 0:
                 # define intercept in order to be able to solve coordinates with linear function
                 b = -(slope*le)
-                print(b)
                 lower_point = (end, self.min_height)
                 upper_point = (self._solve_linear(cut, slope, b))
 
