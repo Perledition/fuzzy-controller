@@ -1,76 +1,28 @@
-,driver_type,target_distance,change_of_distance,acceleration
-0,defensive,very low,strong positive,strong negative
-1,defensive,very low,positive,strong negative
-2,defensive,very low,zero,strong negative
-3,defensive,very low,negative,strong negative
-4,defensive,very low,strong negative,strong negative
-5,aggressive,very low,strong positive,strong negative
-6,aggressive,very low,positive,strong negative
-7,aggressive,very low,zero,strong negative
-8,aggressive,very low,negative,strong negative
-9,aggressive,very low,strong negative,negative
-10,medium,very low,strong positive,strong negative
-11,medium,very low,positive,strong negative
-12,medium,very low,zero,negative
-13,medium,very low,negative,negative
-14,medium,very low,strong negative,negative
-15,defensive,low,strong positive,strong negative
-16,defensive,low,positive,strong negative
-17,defensive,low,zero,negative
-18,defensive,low,negative,negative
-19,defensive,low,strong negative,zero
-20,aggressive,low,strong positive,strong negative
-21,aggressive,low,positive,negative
-22,aggressive,low,zero,negative
-23,aggressive,low,negative,zero
-24,aggressive,low,strong negative,positive
-25,medium,low,strong positive,strong negative
-26,medium,low,positive,negative
-27,medium,low,zero,negative
-28,medium,low,negative,zero
-29,medium,low,strong negative,zero
-30,defensive,medium,strong positive,negative
-31,defensive,medium,positive,negative
-32,defensive,medium,zero,zero
-33,defensive,medium,negative,zero
-34,defensive,medium,strong negative,positive
-35,aggressive,medium,strong positive,negative
-36,aggressive,medium,positive,zero
-37,aggressive,medium,zero,positive
-38,aggressive,medium,negative,positive
-39,aggressive,medium,strong negative,strong positive
-40,medium,medium,strong positive,negative
-41,medium,medium,positive,zero
-42,medium,medium,zero,zero
-43,medium,medium,negative,zero
-44,medium,medium,strong negative,positive
-45,defensive,high,strong positive,zero
-46,defensive,high,positive,zero
-47,defensive,high,zero,positive
-48,defensive,high,negative,positive
-49,defensive,high,strong negative,strong positive
-50,aggressive,high,strong positive,positive
-51,aggressive,high,positive,positive
-52,aggressive,high,zero,strong positive
-53,aggressive,high,negative,strong positive
-54,aggressive,high,strong negative,strong positive
-55,medium,high,strong positive,zero
-56,medium,high,positive,positive
-57,medium,high,zero,positive
-58,medium,high,negative,strong positive
-59,medium,high,strong negative,strong positive
-60,defensive,very high,strong positive,positive
-61,defensive,very high,positive,positive
-62,defensive,very high,zero,positive
-63,defensive,very high,negative,strong positive
-64,defensive,very high,strong negative,strong positive
-65,aggressive,very high,strong positive,strong positive
-66,aggressive,very high,positive,strong positive
-67,aggressive,very high,zero,strong positive
-68,aggressive,very high,negative,strong positive
-69,aggressive,very high,strong negative,strong positive
-70,medium,very high,strong positive,positive
-71,medium,very high,positive,positive
-72,medium,very high,zero,strong positive
-73,medium,very high,negative,strong positive
-74,medium,very high,strong negative,strong positive
+,target_distance, accel_crnt, acceleration
+0, very_low, strong positive, strong negative
+1, very_low, positive, strong negative
+2, very_low, zero, negative
+3, very_low, negative, negative
+4, very_low, strong negative, negative
+5, low, strong positive, strong negative
+6, low, positive, strong negative
+7, low, zero, negative
+8, low, negative, negative
+9, low, strong negative, zero
+10, medium, strong positive, negative
+11, medium, positive, zero
+12, medium, zero, zero
+13, medium, negative, positive
+14, medium, strong negative, positive
+15, high, strong positive, zero
+16, high, positive, positive
+17, high, zero, positive
+18, high, negative, strong positive
+19, high, strong negative, strong positive
+20, very high, strong positive, positive
+21, very high, positive, positive
+22, very high, zero, strong positive
+23, very high, negative, strong positive
+24, very high, strong negative, strong positive
+
+

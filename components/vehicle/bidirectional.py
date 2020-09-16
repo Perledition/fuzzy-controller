@@ -8,10 +8,9 @@ from scipy.interpolate import interp1d
 
 class SimpleCar:
 
-    def __init__(self, distance_goal=20, controller=None):
+    def __init__(self, controller=None):
         self.route = None
         self.route_request = dict()
-        self.distance_goal = distance_goal
         self.distance_controller = controller
         self.velocity = 0
         self.distance = 0
@@ -21,10 +20,6 @@ class SimpleCar:
             "acceleration": [0],
             "distance": [0]
         }
-
-    @staticmethod
-    def _calculate_velocity(distance, acceleration, seconds):
-        return (distance / seconds) - 0.5*acceleration*seconds
 
     @staticmethod
     def _calculate_acceleration(velocity, prev_velocity, seconds):
@@ -42,7 +37,6 @@ class SimpleCar:
         # print("input params: ", velocity, acceleration, seconds)
         distance = abs((velocity*seconds) + 1/2*acceleration*(seconds**2))
 
-       #  print("distance: ", distance, self.distance)
         if overwrite:
             self.distance += distance
             return self.distance
@@ -83,7 +77,7 @@ class SimpleCar:
             velo = pair[0]
             seconds = pair[1]
 
-            const_acc =  self._calculate_acceleration(velo, prev_velo, seconds)
+            const_acc = self._calculate_acceleration(velo, prev_velo, seconds)
             d = dis_calculation(velo, const_acc, seconds)
             prev_velo = velo
             distance += d
@@ -110,26 +104,37 @@ class SimpleCar:
         self.route = route
         self._pre_calculate_route()
 
-    def update(self, distance_to_leading_car):
+    def update(self, distance_to_leading_car, second):
         # set first an array for the fuzzy controller
         # define the current input for the fuzzy controller
+
         current = {
             "target_distance": distance_to_leading_car,
-            "driver_type": self.distance_goal,
-            "change_of_distance": self.velocity
+            "accel_crnt": self.acceleration,
+            "vel_crnt": self.velocity
         }
 
         adjustment = self.distance_controller.run(current)
+        self.acceleration += 1.5*adjustment
 
-        self.acceleration += adjustment
-        distance = self._calculate_distance(self.velocity, self.acceleration, 1)
-        self.velocity += self.acceleration
+        # create a cap for acceleration in order to make the physics more realistic
+        if self.acceleration > 2:
+            self.acceleration = 2
+        elif self.acceleration < -2:
+            self.acceleration = -2
 
+        self.distance += self._calculate_distance(self.velocity, self.acceleration, 1)
 
-        print(f"adjustment: {adjustment} velocity: {self.velocity} acceleration: {self.acceleration} distance: {distance}")
+        if (self.velocity <= 0) and (self.acceleration < 0) and (second == 0):
+            self.velocity = 0
+            self.acceleration = 0
+        else:
+            self.velocity += self.acceleration
+
+        print(f"adjustment: {adjustment} velocity: {self.velocity} acceleration: {self.acceleration} distance: {self.distance}, lead_distance: {distance_to_leading_car}")
         self.history["velocity"].append(self.velocity)
         self.history["acceleration"].append(self.acceleration)
-        self.history["distance"].append(self.distance + distance)
+        self.history["distance"].append(self.distance)
 
 
 

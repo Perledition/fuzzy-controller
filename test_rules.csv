@@ -1,0 +1,126 @@
+target_distance;accel_crnt;vel_crnt;acceleration
+very low;strong positive;very slow;strong negative
+very low;positive;very slow;strong negative
+very low;zero;very slow;negative
+very low;negative;very slow;negative
+very low;strong negative;very slow;zero
+low;strong positive;very slow;negative
+low;positive;very slow;negative
+low;zero;very slow;zero
+low;negative;very slow;zero
+low;strong negative;very slow;negative
+medium;strong positive;very slow;negative
+medium;positive;very slow;negative
+medium;zero;very slow;positive
+medium;negative;very slow;positive
+medium;strong negative;very slow;positive
+high;strong positive;very slow;positive
+high;positive;very slow;positive
+high;zero;very slow;positive
+high;negative;very slow;positive
+high;strong negative;very slow;positive
+very high;strong positive;very slow;positive
+very high;positive;very slow;positive
+very high;zero;very slow;positive
+very high;negative;very slow;positive
+very high;strong negative;very slow;positive
+very low;strong positive;slow;positive
+very low;positive;slow;negative
+very low;zero;slow;zero
+very low;negative;slow;zero
+very low;strong negative;slow;zero
+low;strong positive;slow;negative
+low;positive;slow;negative
+low;zero;slow;zero
+low;negative;slow;zero
+low;strong negative;slow;zero
+medium;strong positive;slow;positive
+medium;positive;slow;zero
+medium;zero;slow;positive
+medium;negative;slow;positive
+medium;strong negative;slow;positive
+high;strong positive;slow;positive
+high;positive;slow;positive
+high;zero;slow;positive
+high;negative;slow;positive
+high;strong negative;slow;positive
+very high;strong positive;slow;positive
+very high;positive;slow;positive
+very high;zero;slow;positive
+very high;negative;slow;positive
+very high;strong negative;slow;positive
+very low;strong positive;medium;strong negative
+very low;positive;medium;strong negative
+very low;zero;medium;strong negative
+very low;negative;medium;strong negative
+very low;strong negative;medium;strong negative
+low;strong positive;medium;negative
+low;positive;medium;negative
+low;zero;medium;negative
+low;negative;medium;negative
+low;strong negative;medium;negative
+medium;strong positive;medium;zero
+medium;positive;medium;zero
+medium;zero;medium;positive
+medium;negative;medium;positive
+medium;strong negative;medium;positive
+high;strong positive;medium;negative
+high;positive;medium;zero
+high;zero;medium;positive
+high;negative;medium;positive
+high;strong negative;medium;positive
+very high;strong positive;medium;negative
+very high;positive;medium;zero
+very high;zero;medium;positive
+very high;negative;medium;positive
+very high;strong negative;medium;strong positive
+very low;strong positive;fast;strong negative
+very low;positive;fast;strong negative
+very low;zero;fast;strong negative
+very low;negative;fast;strong negative
+very low;strong negative;fast;strong negative
+low;strong positive;fast;strong negative
+low;positive;fast;strong negative
+low;zero;fast;strong negative
+low;negative;fast;strong negative
+low;strong negative;fast;strong negative
+medium;strong positive;fast;strong negative
+medium;positive;fast;strong negative
+medium;zero;fast;negative
+medium;negative;fast;negative
+medium;strong negative;fast;negative
+high;strong positive;fast;negative
+high;positive;fast;negative
+high;zero;fast;negative
+high;negative;fast;zero
+high;strong negative;fast;zero
+very high;strong positive;fast;negative
+very high;positive;fast;negative
+very high;zero;fast;zero
+very high;negative;fast;zero
+very high;strong negative;fast;zero
+very low;strong positive;very fast;strong negative
+very low;positive;very fast;strong negative
+very low;zero;very fast;strong negative
+very low;negative;very fast;strong negative
+very low;strong negative;very fast;strong negative
+low;strong positive;very fast;strong negative
+low;positive;very fast;strong negative
+low;zero;very fast;strong negative
+low;negative;very fast;strong negative
+low;strong negative;very fast;strong negative
+medium;strong positive;very fast;negative
+medium;positive;very fast;negative
+medium;zero;very fast;negative
+medium;negative;very fast;negative
+medium;strong negative;very fast;zero
+high;strong positive;very fast;zero
+high;positive;very fast;zero
+high;zero;very fast;positive
+high;negative;very fast;positive
+high;strong negative;very fast;positive
+very high;strong positive;very fast;positive
+very high;positive;very fast;positive
+very high;zero;very fast;strong positive
+very high;negative;very fast;strong positive
+very high;strong negative;very fast;strong positive

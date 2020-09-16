@@ -126,18 +126,25 @@ class FuzzyDistanceController(object):
             # get an denormalize the x value of the centroid to get the output value for the original input range
             result["output"] = self.output.denormalize_value(result["centroid"][0])
 
-        # print(centroid_data)
+        print(centroid_data)
         # create a weighted average over the results to return a single action
         degree_sum = sum([x["degree"] for x in centroid_data])
-
+        print(degree_sum)
         action = 0
         for result in centroid_data:
             try:
-                weight = result["degree"]/degree_sum
-                action += (weight * result["output"])
+
+                leading_sign = lambda x: -1 if x < 0 else 1
+                weight = leading_sign(result["degree"]) * result["degree"]/degree_sum
+                deg_action = (weight * result["output"])
+                # actions.append(action)
+                action += deg_action
             except ZeroDivisionError:
                 continue
 
+        # print(f"len: {len(actions)}, set: {len(list(set(actions)))}, action: {sum(actions)}")
+
+        #action = sum(list(set(actions)))
         return action
 
     def set_ruleset(self, rules: pd.DataFrame):
