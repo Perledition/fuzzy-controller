@@ -132,8 +132,11 @@ class FuzzyDistanceController(object):
 
         action = 0
         for result in centroid_data:
-            weight = result["degree"]/degree_sum
-            action += (weight * result["output"])
+            try:
+                weight = result["degree"]/degree_sum
+                action += (weight * result["output"])
+            except ZeroDivisionError:
+                continue
 
         return action
 

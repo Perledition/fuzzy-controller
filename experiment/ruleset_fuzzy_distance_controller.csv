@@ -2,13 +2,13 @@
 0,defensive,very low,strong positive,strong negative
 1,defensive,very low,positive,strong negative
 2,defensive,very low,zero,strong negative
-3,defensive,very low,negative,negative
-4,defensive,very low,strong negative,negative
+3,defensive,very low,negative,strong negative
+4,defensive,very low,strong negative,strong negative
 5,aggressive,very low,strong positive,strong negative
-6,aggressive,very low,positive,negative
-7,aggressive,very low,zero,negative
-8,aggressive,very low,negative,negative
-9,aggressive,very low,strong negative,zero
+6,aggressive,very low,positive,strong negative
+7,aggressive,very low,zero,strong negative
+8,aggressive,very low,negative,strong negative
+9,aggressive,very low,strong negative,negative
 10,medium,very low,strong positive,strong negative
 11,medium,very low,positive,strong negative
 12,medium,very low,zero,negative

@@ -1,140 +1,135 @@
+# import standard modules
+
+# import third party modules
+from scipy.interpolate import interp1d
+
+# import project related modules
+
 
 class SimpleCar:
 
-    def __init__(self, route=None, distance_prev=0, controller=None, distance_lead=0):
-        self.distance = -distance_lead  # measured in meter
-        self.velocity = 0  # measured in meter/s
-        self.acceleration = 0  # measured in meter/s*s
-        self.route = route  # external provided route with list of milestones [(second, velocity), ...]
-        self.route_step = 0  # current index of the route map
-        self.last_acceleration = 0  # last known acceleration
-        self.last_switch_acceleration = 0  # timestamp to which the acceleration was changed
-        self.distance_prev = distance_prev  # distance to leading car used by driver
-        self.distance_lead = distance_lead  # defines the distance to the leading car
-        self.controller = controller  # FuzzyDistanceController defined
-        self.blackbox = {  # captures the journey
-            "distance": list(),
-            "velocity": list(),
-            "acceleration": list(),
-            "target_distance": list()
+    def __init__(self, distance_goal=20, controller=None):
+        self.route = None
+        self.route_request = dict()
+        self.distance_goal = distance_goal
+        self.distance_controller = controller
+        self.velocity = 0
+        self.distance = 0
+        self.acceleration = 0
+        self.history = {
+            "velocity": [0],
+            "acceleration": [0],
+            "distance": [0]
         }
 
-    def _route_step(self, t):
+    @staticmethod
+    def _calculate_velocity(distance, acceleration, seconds):
+        return (distance / seconds) - 0.5*acceleration*seconds
 
-        # get the timestamp of the current route milestone
+    @staticmethod
+    def _calculate_acceleration(velocity, prev_velocity, seconds):
+
         try:
-            timestamp_current = self.route[self.route_step][0]
+            acceleration = (velocity - prev_velocity)/seconds
+            return acceleration
 
-            # if the current second is larger than the last route step
-            # go one step ahead
-            if t >= timestamp_current:
-                self.route_step += 1
-                return True
+        except ZeroDivisionError:
+            acceleration = 0
+            return acceleration
 
-            else:
-                return False
+    def _calculate_distance(self, velocity, acceleration, seconds, overwrite=False):
 
-        # in case of an index error the route is over and the vehicle will remain constant
-        except IndexError:
-            return False
+        # print("input params: ", velocity, acceleration, seconds)
+        distance = abs((velocity*seconds) + 1/2*acceleration*(seconds**2))
 
-    def _blackbox_update(self):
-        self.blackbox["distance"].append(self.distance)
-        self.blackbox["velocity"].append(self.velocity)
-        self.blackbox["acceleration"].append(self.acceleration)
-
-        if self.route is None:
-            self.blackbox["target_distance"].append(self.distance_lead)
-
-    def _radar(self, distance_lead):
-        self.distance_lead = distance_lead - self.distance
-        assert self.distance_lead > 0, "crash!!!!"
-
-    def _velocity(self, t):
-        self.velocity += self.acceleration * t
-        if self.velocity < 0:
-            self.velocity = 0
-        elif self.velocity > 20:
-            self.velocity = 20
-
-    def _acceleration(self, ms_crnt, ms_prev):
-
-        if self.route is not None:
-            delta_time = ms_crnt[0] - ms_prev[0]
-            delta_vel = ms_crnt[1] - ms_prev[1]
-            # print(f"delta t: {delta_time}, delta v {delta_vel}")
-            self.acceleration = delta_vel/delta_time
-
-            if self.acceleration > 20:
-                self.acceleration = 20
-
+       #  print("distance: ", distance, self.distance)
+        if overwrite:
+            self.distance += distance
+            return self.distance
         else:
-            self.acceleration = 0
+            return distance
 
-    def _distance(self, t):
-        # calculation is absolute because its just a one directional movement (velocity -> speed)
-        # since velocity would have also a direction. But our direction will always be positive
-        self.distance += abs(0.5 * self.acceleration * (t**2))
-        # self.distance += self.velocity * t
+    # functions to calculate the leading car
+    def _pre_calculate_route(self):
 
-    def update(self, second, distance=500):
+        # add a time indicator value to each tuple for better query capabilites
+        second = 0
+        route = [(0, 0, 0)]  # set route with initial values of 0 velocity, seconds to hold and absolut seconds
 
-        # no route is available use fuzzy logic to adjust acceleration
-        if self.route is None:
+        for v, s in self.route:
 
-            # update the journey protocol
-            self._blackbox_update()
+            # add absolut second indicator in order to improve query capeabilites
+            second += s
+            route += [(v, s, second)]
 
-            # second, distance, prev_distance
-            self._radar(distance)
+        # overwrite route with copy and addtional absolut second count
+        self.route = route
+
+        # collect second, velocity, acceleration and distance for each milestone within the route
+        sec = [s[2] for s in self.route]
+        vel = [v[0] for v in self.route]
+        # acc = [self._calculate_acceleration(x[0], x[1]) for x in self.route]
+
+        dis_calculation = lambda vel, acc, sec: abs((vel*sec) + 1/2*acc*(sec**2))
+
+        # calculate acceleration and distance for the milestones in order to make the values
+        # available for a interpolation function
+        distance = 0
+        prev_velo = 0
+        dis = list()
+        acc = list()
+        for pair in self.route:
+
+            velo = pair[0]
+            seconds = pair[1]
+
+            const_acc =  self._calculate_acceleration(velo, prev_velo, seconds)
+            d = dis_calculation(velo, const_acc, seconds)
+            prev_velo = velo
+            distance += d
+            acc.append(const_acc)
+            dis.append(distance)
+
+        # set interpolation functions for each attribute in order to request a specific second later on
+        self.route_request["velocity"] = interp1d(sec, vel)
+        self.route_request["acceleration"] = interp1d(sec, acc)
+        self.route_request["distance"] = interp1d(sec, dis)
+
+    def get_second(self, second):
+        vel = self.route_request["velocity"](second)
+        acc = self.route_request["acceleration"](second)
+        dis = self.route_request["distance"](second)
+
+        # print(f"second: {second} velocity: {vel} acceleration: {acc} distance: {dis}")
+        return vel, acc, dis
+
+    def set_route(self, route=None):
+        assert type(route) == list,\
+            "route must be list of tuples [(meter per second, time in seconds to keep velocity)]"
+
+        self.route = route
+        self._pre_calculate_route()
+
+    def update(self, distance_to_leading_car):
+        # set first an array for the fuzzy controller
+        # define the current input for the fuzzy controller
+        current = {
+            "target_distance": distance_to_leading_car,
+            "driver_type": self.distance_goal,
+            "change_of_distance": self.velocity
+        }
+
+        adjustment = self.distance_controller.run(current)
+
+        self.acceleration += adjustment
+        distance = self._calculate_distance(self.velocity, self.acceleration, 1)
+        self.velocity += self.acceleration
 
 
-            # define the current input for the fuzzy controller
-            current = {"target_distance": self.distance_lead,
-                       "driver_type": self.distance_prev,
-                       "change_of_distance": self.acceleration}
-            # assign the controller output to the new acceleration
-            self.last_acceleration = self.acceleration
-            self.acceleration = self.controller.run(current)
-
-            #if round(self.last_acceleration, 3) != round(self.acceleration, 3):
-            # define how long the acceleration was constant
-            timing = second - self.last_switch_acceleration
-            self.last_switch_acceleration = second
-
-            # update acceleration
-            self._distance(timing)
-
-            # update velocity
-            self._velocity(timing)
+        print(f"adjustment: {adjustment} velocity: {self.velocity} acceleration: {self.acceleration} distance: {distance}")
+        self.history["velocity"].append(self.velocity)
+        self.history["acceleration"].append(self.acceleration)
+        self.history["distance"].append(self.distance + distance)
 
 
-            #else:
-             #   self._blackbox_update()
 
-        # if route is available check whether a new milestone is was reached
-        elif self._route_step(second):
-            try:
-                # get new and previous milestone for further calculation
-                ms_crnt = self.route[self.route_step]
-                ms_prev = self.route[self.route_step - 1]
-
-                # update acceleration
-                self._acceleration(ms_crnt, ms_prev)
-
-                # update velocity
-                timing = ms_crnt[0] - ms_prev[0]
-                self._velocity(timing)
-
-                # update distance made
-                self._distance(timing)  # timing
-
-                # update the journey protocol
-                self._blackbox_update()
-
-            except IndexError:
-                # in case of an index error the route is over and the vehicle will remain constant
-                self._blackbox_update()
-
-        else:
-            self._blackbox_update()

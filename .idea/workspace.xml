@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f724a5af-a7e6-4eca-8f85-989be012560a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/experiment/fuzzy-test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/experiment/intervals.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/car_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/controller/activation.py" beforeDir="false" afterPath="$PROJECT_DIR$/components/controller/activation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pipfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/controller/fuzzy.py" beforeDir="false" afterPath="$PROJECT_DIR$/components/controller/fuzzy.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/vehicle/bidirectional.py" beforeDir="false" afterPath="$PROJECT_DIR$/components/vehicle/bidirectional.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment/intervals.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment/intervals.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment/ruleset_fuzzy_distance_controller.csv" beforeDir="false" afterPath="$PROJECT_DIR$/experiment/ruleset_fuzzy_distance_controller.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/experiment/simple_car_travel.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment/simple_car_travel.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,6 +48,28 @@
     </key>
   </component>
   <component name="RunManager" selected="Python.simple_car_travel">
+    <configuration name="car_test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="fuzzy-controller" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/car_test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="fuzzy" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="fuzzy-controller" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -115,6 +139,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.simple_car_travel" />
+        <item itemvalue="Python.car_test" />
         <item itemvalue="Python.fuzzy" />
         <item itemvalue="Python.membership" />
       </list>
@@ -137,7 +162,16 @@
       <workItem from="1596125724184" duration="72000" />
       <workItem from="1596125815610" duration="9634000" />
       <workItem from="1596220177853" duration="2690000" />
-      <workItem from="1596259315099" duration="25222000" />
+      <workItem from="1596259315099" duration="26072000" />
+      <workItem from="1596372198509" duration="66000" />
+      <workItem from="1596373876079" duration="15000" />
+      <workItem from="1597074471017" duration="1069000" />
+      <workItem from="1597085645361" duration="13000" />
+      <workItem from="1599412499080" duration="828000" />
+      <workItem from="1599495110005" duration="6671000" />
+      <workItem from="1599648414083" duration="985000" />
+      <workItem from="1599918155133" duration="41000" />
+      <workItem from="1600183884186" duration="5267000" />
     </task>
     <servers />
   </component>
@@ -145,58 +179,59 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1321" y="569" key="FileChooserDialogImpl" timestamp="1596129733046">
+    <state x="1321" y="569" key="FileChooserDialogImpl" timestamp="1599918193510">
       <screen x="0" y="40" width="3440" height="1400" />
     </state>
-    <state x="1321" y="569" key="FileChooserDialogImpl/0.40.3440.1400@0.40.3440.1400" timestamp="1596129733046" />
-    <state width="2633" height="359" key="GridCell.Tab.0.bottom" timestamp="1596370531934">
+    <state x="1321" y="569" key="FileChooserDialogImpl/0.40.3440.1400@0.40.3440.1400" timestamp="1599918193510" />
+    <state width="2469" height="418" key="GridCell.Tab.0.bottom" timestamp="1600189517987">
       <screen x="0" y="40" width="3440" height="1400" />
     </state>
     <state width="1659" height="159" key="GridCell.Tab.0.bottom/0.23.1680.973@0.23.1680.973" timestamp="1595396565784" />
     <state width="1687" height="275" key="GridCell.Tab.0.bottom/0.23.3440.1363@0.23.3440.1363" timestamp="1595347820828" />
-    <state width="2633" height="359" key="GridCell.Tab.0.bottom/0.40.3440.1400@0.40.3440.1400" timestamp="1596370531934" />
-    <state width="2633" height="359" key="GridCell.Tab.0.center" timestamp="1596370531934">
+    <state width="2469" height="418" key="GridCell.Tab.0.bottom/0.40.3440.1400@0.40.3440.1400" timestamp="1600189517987" />
+    <state width="2469" height="418" key="GridCell.Tab.0.center" timestamp="1600189517987">
       <screen x="0" y="40" width="3440" height="1400" />
     </state>
     <state width="1659" height="159" key="GridCell.Tab.0.center/0.23.1680.973@0.23.1680.973" timestamp="1595396565784" />
     <state width="1687" height="275" key="GridCell.Tab.0.center/0.23.3440.1363@0.23.3440.1363" timestamp="1595347820827" />
-    <state width="2633" height="359" key="GridCell.Tab.0.center/0.40.3440.1400@0.40.3440.1400" timestamp="1596370531934" />
-    <state width="2633" height="359" key="GridCell.Tab.0.left" timestamp="1596370531934">
+    <state width="2469" height="418" key="GridCell.Tab.0.center/0.40.3440.1400@0.40.3440.1400" timestamp="1600189517987" />
+    <state width="2469" height="418" key="GridCell.Tab.0.left" timestamp="1600189517986">
       <screen x="0" y="40" width="3440" height="1400" />
     </state>
     <state width="1659" height="159" key="GridCell.Tab.0.left/0.23.1680.973@0.23.1680.973" timestamp="1595396565784" />
     <state width="1687" height="275" key="GridCell.Tab.0.left/0.23.3440.1363@0.23.3440.1363" timestamp="1595347820826" />
-    <state width="2633" height="359" key="GridCell.Tab.0.left/0.40.3440.1400@0.40.3440.1400" timestamp="1596370531934" />
-    <state width="2633" height="359" key="GridCell.Tab.0.right" timestamp="1596370531934">
+    <state width="2469" height="418" key="GridCell.Tab.0.left/0.40.3440.1400@0.40.3440.1400" timestamp="1600189517986" />
+    <state width="2469" height="418" key="GridCell.Tab.0.right" timestamp="1600189517987">
       <screen x="0" y="40" width="3440" height="1400" />
     </state>
     <state width="1659" height="159" key="GridCell.Tab.0.right/0.23.1680.973@0.23.1680.973" timestamp="1595396565784" />
     <state width="1687" height="275" key="GridCell.Tab.0.right/0.23.3440.1363@0.23.3440.1363" timestamp="1595347820827" />
-    <state width="2633" height="359" key="GridCell.Tab.0.right/0.40.3440.1400@0.40.3440.1400" timestamp="1596370531934" />
-    <state width="2633" height="320" key="GridCell.Tab.1.bottom" timestamp="1596263441183">
+    <state width="2469" height="418" key="GridCell.Tab.0.right/0.40.3440.1400@0.40.3440.1400" timestamp="1600189517987" />
+    <state width="2391" height="338" key="GridCell.Tab.1.bottom" timestamp="1599497815995">
       <screen x="0" y="40" width="3440" height="1400" />
     </state>
-    <state width="2633" height="320" key="GridCell.Tab.1.bottom/0.40.3440.1400@0.40.3440.1400" timestamp="1596263441183" />
-    <state width="2633" height="320" key="GridCell.Tab.1.center" timestamp="1596263441183">
+    <state width="2391" height="338" key="GridCell.Tab.1.bottom/0.40.3440.1400@0.40.3440.1400" timestamp="1599497815995" />
+    <state width="2391" height="338" key="GridCell.Tab.1.center" timestamp="1599497815995">
       <screen x="0" y="40" width="3440" height="1400" />
     </state>
-    <state width="2633" height="320" key="GridCell.Tab.1.center/0.40.3440.1400@0.40.3440.1400" timestamp="1596263441183" />
-    <state width="2633" height="320" key="GridCell.Tab.1.left" timestamp="1596263441183">
+    <state width="2391" height="338" key="GridCell.Tab.1.center/0.40.3440.1400@0.40.3440.1400" timestamp="1599497815995" />
+    <state width="2391" height="338" key="GridCell.Tab.1.left" timestamp="1599497815995">
       <screen x="0" y="40" width="3440" height="1400" />
     </state>
-    <state width="2633" height="320" key="GridCell.Tab.1.left/0.40.3440.1400@0.40.3440.1400" timestamp="1596263441183" />
-    <state width="2633" height="320" key="GridCell.Tab.1.right" timestamp="1596263441183">
+    <state width="2391" height="338" key="GridCell.Tab.1.left/0.40.3440.1400@0.40.3440.1400" timestamp="1599497815995" />
+    <state width="2391" height="338" key="GridCell.Tab.1.right" timestamp="1599497815995">
       <screen x="0" y="40" width="3440" height="1400" />
     </state>
-    <state width="2633" height="320" key="GridCell.Tab.1.right/0.40.3440.1400@0.40.3440.1400" timestamp="1596263441183" />
+    <state width="2391" height="338" key="GridCell.Tab.1.right/0.40.3440.1400@0.40.3440.1400" timestamp="1599497815995" />
     <state x="1150" y="392" key="SettingsEditor" timestamp="1595414729569">
       <screen x="0" y="40" width="3440" height="1400" />
     </state>
     <state x="1150" y="392" key="SettingsEditor/0.40.3440.1400@0.40.3440.1400" timestamp="1595414729569" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/fuzzy_controller$car_test.coverage" NAME="car_test Coverage Results" MODIFIED="1599500565981" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/fuzzy_controller$membership.coverage" NAME="membership Coverage Results" MODIFIED="1595429546366" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/components/controller" />
     <SUITE FILE_PATH="coverage/fuzzy_controller$fuzzy.coverage" NAME="fuzzy Coverage Results" MODIFIED="1595520965208" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/components/controller" />
-    <SUITE FILE_PATH="coverage/fuzzy_controller$simple_car_travel.coverage" NAME="simple_car_travel Coverage Results" MODIFIED="1596370531928" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/experiment" />
+    <SUITE FILE_PATH="coverage/fuzzy_controller$simple_car_travel.coverage" NAME="simple_car_travel Coverage Results" MODIFIED="1600188785498" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/experiment" />
   </component>
 </project>

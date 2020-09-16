@@ -29,9 +29,9 @@ settings = {
 
 # m/s2 -> output intervals
 accel = {
-    "strong negative": {"lower_end": -10, "center": -10, "upper_end": -5},
-    "negative": {"lower_end": -10, "center": -5, "upper_end": 0},
-    "zero": {"lower_end": -3, "center": 0, "upper_end": 3},
-    "positive": {"lower_end": 0, "center": 5, "upper_end": 10},
-    "strong positive": {"lower_end": 5, "center": 10, "upper_end": 10},
+    "strong negative": {"lower_end": -2, "center": -2, "upper_end": -1},
+    "negative": {"lower_end": -2, "center": -1, "upper_end": 0},
+    "zero": {"lower_end": -1, "center": 0, "upper_end": 1},
+    "positive": {"lower_end": 0, "center": 1, "upper_end": 2},
+    "strong positive": {"lower_end": 1, "center": 2, "upper_end": 2},
 }
