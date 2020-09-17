@@ -8,8 +8,9 @@ from scipy.interpolate import interp1d
 
 class SimpleCar:
 
-    def __init__(self, controller=None):
+    def __init__(self, controller=None, adoption_rate=1):
         self.route = None
+        self.adoption_rate = adoption_rate
         self.route_request = dict()
         self.distance_controller = controller
         self.velocity = 0
@@ -115,7 +116,8 @@ class SimpleCar:
         }
 
         adjustment = self.distance_controller.run(current)
-        self.acceleration += 1.5*adjustment
+
+        self.acceleration += self.adoption_rate * adjustment
 
         # create a cap for acceleration in order to make the physics more realistic
         if self.acceleration > 2:
@@ -125,7 +127,7 @@ class SimpleCar:
 
         self.distance += self._calculate_distance(self.velocity, self.acceleration, 1)
 
-        if (self.velocity <= 0) and (self.acceleration < 0) and (second == 0):
+        if self.velocity < 0:
             self.velocity = 0
             self.acceleration = 0
         else:

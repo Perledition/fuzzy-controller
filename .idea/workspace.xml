@@ -2,12 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f724a5af-a7e6-4eca-8f85-989be012560a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/experiment/experiment.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/experiment/groups.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/membership_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pipfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/controller/fuzzy.py" beforeDir="false" afterPath="$PROJECT_DIR$/components/controller/fuzzy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/controller/membership.py" beforeDir="false" afterPath="$PROJECT_DIR$/components/controller/membership.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/vehicle/bidirectional.py" beforeDir="false" afterPath="$PROJECT_DIR$/components/vehicle/bidirectional.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/experiment/intervals.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment/intervals.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/experiment/ruleset_fuzzy_distance_controller.csv" beforeDir="false" afterPath="$PROJECT_DIR$/experiment/ruleset_fuzzy_distance_controller.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment/ruleset_fuzzy_distance_controller.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/experiment/simple_car_travel.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment/simple_car_travel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_rules.csv" beforeDir="false" afterPath="$PROJECT_DIR$/experiment/test_rules.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +47,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/experiment" />
       <recent name="C:\Users\Maxim\PycharmProjects\fuzzy-controller\experiment" />
       <recent name="$PROJECT_DIR$/components" />
     </key>
@@ -58,28 +66,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/components/vehicle/bidirectional.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="car_test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="fuzzy-controller" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/car_test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -131,6 +117,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="membership_test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="fuzzy-controller" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/membership_test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="simple_car_travel" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="fuzzy-controller" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -157,9 +164,9 @@
       <list>
         <item itemvalue="Python.simple_car_travel" />
         <item itemvalue="Python.intervals" />
+        <item itemvalue="Python.membership_test" />
         <item itemvalue="Python.fuzzy" />
         <item itemvalue="Python.bidirectional" />
-        <item itemvalue="Python.car_test" />
       </list>
     </recent_temporary>
   </component>
@@ -213,29 +220,29 @@
       <screen x="0" y="40" width="3440" height="1400" />
     </state>
     <state x="1321" y="569" key="FileChooserDialogImpl/0.40.3440.1400@0.40.3440.1400" timestamp="1599918193510" />
-    <state width="1878" height="371" key="GridCell.Tab.0.bottom" timestamp="1600268123532">
+    <state width="1843" height="386" key="GridCell.Tab.0.bottom" timestamp="1600352322451">
       <screen x="0" y="23" width="3440" height="1363" />
     </state>
     <state width="1659" height="159" key="GridCell.Tab.0.bottom/0.23.1680.973@0.23.1680.973" timestamp="1595396565784" />
-    <state width="1878" height="371" key="GridCell.Tab.0.bottom/0.23.3440.1363@0.23.3440.1363" timestamp="1600268123532" />
+    <state width="1843" height="386" key="GridCell.Tab.0.bottom/0.23.3440.1363@0.23.3440.1363" timestamp="1600352322451" />
     <state width="2469" height="418" key="GridCell.Tab.0.bottom/0.40.3440.1400@0.40.3440.1400" timestamp="1600189517987" />
-    <state width="1878" height="371" key="GridCell.Tab.0.center" timestamp="1600268123531">
+    <state width="1843" height="386" key="GridCell.Tab.0.center" timestamp="1600352322450">
       <screen x="0" y="23" width="3440" height="1363" />
     </state>
     <state width="1659" height="159" key="GridCell.Tab.0.center/0.23.1680.973@0.23.1680.973" timestamp="1595396565784" />
-    <state width="1878" height="371" key="GridCell.Tab.0.center/0.23.3440.1363@0.23.3440.1363" timestamp="1600268123531" />
+    <state width="1843" height="386" key="GridCell.Tab.0.center/0.23.3440.1363@0.23.3440.1363" timestamp="1600352322450" />
     <state width="2469" height="418" key="GridCell.Tab.0.center/0.40.3440.1400@0.40.3440.1400" timestamp="1600189517987" />
-    <state width="1878" height="371" key="GridCell.Tab.0.left" timestamp="1600268123531">
+    <state width="1843" height="386" key="GridCell.Tab.0.left" timestamp="1600352322450">
       <screen x="0" y="23" width="3440" height="1363" />
     </state>
     <state width="1659" height="159" key="GridCell.Tab.0.left/0.23.1680.973@0.23.1680.973" timestamp="1595396565784" />
-    <state width="1878" height="371" key="GridCell.Tab.0.left/0.23.3440.1363@0.23.3440.1363" timestamp="1600268123531" />
+    <state width="1843" height="386" key="GridCell.Tab.0.left/0.23.3440.1363@0.23.3440.1363" timestamp="1600352322450" />
     <state width="2469" height="418" key="GridCell.Tab.0.left/0.40.3440.1400@0.40.3440.1400" timestamp="1600189517986" />
-    <state width="1878" height="371" key="GridCell.Tab.0.right" timestamp="1600268123531">
+    <state width="1843" height="386" key="GridCell.Tab.0.right" timestamp="1600352322450">
       <screen x="0" y="23" width="3440" height="1363" />
     </state>
     <state width="1659" height="159" key="GridCell.Tab.0.right/0.23.1680.973@0.23.1680.973" timestamp="1595396565784" />
-    <state width="1878" height="371" key="GridCell.Tab.0.right/0.23.3440.1363@0.23.3440.1363" timestamp="1600268123531" />
+    <state width="1843" height="386" key="GridCell.Tab.0.right/0.23.3440.1363@0.23.3440.1363" timestamp="1600352322450" />
     <state width="2469" height="418" key="GridCell.Tab.0.right/0.40.3440.1400@0.40.3440.1400" timestamp="1600189517987" />
     <state width="2088" height="465" key="GridCell.Tab.1.bottom" timestamp="1600248853974">
       <screen x="0" y="23" width="3440" height="1363" />
@@ -257,9 +264,10 @@
     </state>
     <state width="2088" height="465" key="GridCell.Tab.1.right/0.23.3440.1363@0.23.3440.1363" timestamp="1600248853974" />
     <state width="2391" height="338" key="GridCell.Tab.1.right/0.40.3440.1400@0.40.3440.1400" timestamp="1599497815995" />
-    <state x="1150" y="392" key="SettingsEditor" timestamp="1595414729569">
-      <screen x="0" y="40" width="3440" height="1400" />
+    <state x="1125" y="429" key="SettingsEditor" timestamp="1600339389229">
+      <screen x="0" y="23" width="3440" height="1363" />
     </state>
+    <state x="1125" y="429" key="SettingsEditor/0.23.3440.1363@0.23.3440.1363" timestamp="1600339389229" />
     <state x="1150" y="392" key="SettingsEditor/0.40.3440.1400@0.40.3440.1400" timestamp="1595414729569" />
   </component>
 </project>

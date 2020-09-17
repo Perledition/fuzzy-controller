@@ -1,9 +1,86 @@
-import warnings
 import pandas as pd
-from shapely.geometry import Polygon
-from shapely.geometry import LineString
-from components.controller.membership import Membership
+import warnings
 from matplotlib import pyplot as plt
+from scipy.interpolate import interp1d
+from components.controller.activation import PolygonGravity
+from experiment.intervals import accel, settings
+from shapely.geometry import Polygon
+from shapely.geometry import LineString, Point
+
+accel_crnt = {
+    "strong negative": {"lower_end": -2, "center": -2, "upper_end": -1},
+    "negative": {"lower_end": -2, "center": -1, "upper_end": 0},
+    "zero": {"lower_end": -2, "center": 0, "upper_end": 2},
+    "positive": {"lower_end": 0, "center": 1, "upper_end": 2},
+    "strong positive": {"lower_end": 1, "center": 2, "upper_end": 2}
+}
+
+
+class Membership:
+
+    def __init__(self):
+        self.memberships = None
+        self.name = ""
+        self.max_value = 0
+        self.min_value = 0
+
+    def get_membership_degree(self, value):
+
+        if value > self.max_value:
+            value = self.max_value
+        elif value < self.min_value:
+            value = self.min_value
+
+        for category, values in self.memberships.items():
+
+            if (value >= values["lower_end"]) and (value <= values["upper_end"]):
+                values["degree"] = float(values["coordinates"]["degree_func"](value))
+
+            else:
+                values["degree"] = 0
+
+        return self.memberships
+
+    def get_member(self, name):
+        try:
+            return self.memberships[name]
+        except KeyError:
+            print("name is not valid for this group")
+            return dict()
+
+    def _contribute_max_min(self, value):
+        if value > self.max_value:
+            self.max_value = value
+        elif value < self.min_value:
+            self.min_value = value
+
+    def fit(self, members, name=""):
+        self.memberships = members
+        self.name = name
+
+        for category, values in self.memberships.items():
+
+            for x in list(values.values()):
+                self._contribute_max_min(x)
+
+            x_values = list(values.values())
+            if len(set(x_values[:2])) == 1:
+                y_values = [1, 1, 0]
+            elif len(set(x_values[1:])) == 1:
+                y_values = [0, 1, 1]
+            else:
+                y_values = [0, 1, 0]
+
+            values["coordinates"] = {"x": x_values, "y": y_values, "degree_func": interp1d(x_values, y_values)}
+
+    def show(self):
+        for category, values in self.memberships.items():
+            print(values)
+            plt.plot(values["coordinates"]["x"], values["coordinates"]["y"], label=category)
+
+        plt.title(self.name)
+        plt.legend()
+        plt.show()
 
 
 class FuzzyDistanceController(object):
@@ -42,6 +119,7 @@ class FuzzyDistanceController(object):
 
         # generate a query value combinations from category and related values - is needed to keep the query dynamic
         for cat, members in category_members.items():
+
             # query string must include a or condition - since a category can have multiple members true
             # to a certain degree
             query_string = " | ".join(f"({cat}=='{mem}')" for mem in members)
@@ -81,11 +159,11 @@ class FuzzyDistanceController(object):
         # get interval relevant columns - with the name of memberships
         valid_columns = list(perception.keys())
         for column in valid_columns:
+
             memberships = perception[column]
             subset[f"{column}_value"] = subset.apply(lambda row: memberships[row[column]]["degree"], axis=1)
 
-        subset["degree"] = subset.loc[:, [f"{column}_value" for column in valid_columns]].sum(axis='columns') / len(
-            valid_columns)
+        subset["degree"] = subset.loc[:, [f"{column}_value" for column in valid_columns]].sum(axis='columns') / len(valid_columns)
 
         # create a set of fuzzy outputs [{"output category": "member", "degree": value of degree}, ...]
         result = subset.loc[:, ["acceleration", "degree"]].to_dict("r")
@@ -101,19 +179,11 @@ class FuzzyDistanceController(object):
         point_of_intersection = int_pt.x, int_pt.y
         return point_of_intersection
 
-    @staticmethod
-    def _coordinate_validation(x, y):
-        if (x[0] == x[1]) and (y[0] == y[1]):
-            y[0] = 0
-        elif (x[1] == x[2]) and (y[1] == y[2]):
-            y[1] = 0
-
-        return x, y
-
     def _member_centroid_generator(self, fuzzy_results):
 
         results = list()
         for f_set in fuzzy_results:
+
             # set variables - member name and degree to which the member is true
             member = f_set[self.output.name]
             degree = f_set["degree"]
@@ -124,13 +194,8 @@ class FuzzyDistanceController(object):
             x = coordinates["x"]
             y = coordinates["y"]
 
-            si = 0
-            if x[1] == x[2]:
-                si = 1
-
-            x, y = self._coordinate_validation(x, y)
             x1 = (x[0], y[0])
-            x2 = self._get_intersection(x1, (x[1 + si], y[1 + si]), (x[0], degree), (x[2], degree))
+            x2 = self._get_intersection(x1, (x[1], y[1]), (x[0], degree), (x[2], degree))
             x3 = self._get_intersection((x[1], y[1]), (x[2], y[2]), (x[0], degree), (x[2], degree))
             x4 = (x[2], y[2])
 
@@ -180,16 +245,9 @@ class FuzzyDistanceController(object):
             # create a MembershipValidator object for each category - the validator calculates the memberships
             # the objects will be stored in self.feature_space
             for category, setup in feature_space.items():
-                assert type(setup[0]) is dict, f"{category} does not contain a setup dict, create a dict"
-
-                # measure defines the base unit of measure for the groups it will be empty be default
-                if len(setup) > 1:
-                    measure = setup[1]
-                else:
-                    measure = ""
-
-                mem = Membership(measure=measure)
-                mem.fit(setup[0], name=category)
+                assert type(setup) is dict, f"{category} does not contain a setup dict, create a dict"
+                mem = Membership()
+                mem.fit(setup, name=category)
                 self.feature_space[category] = mem
             return True
 
@@ -212,25 +270,22 @@ class FuzzyDistanceController(object):
             warnings.warn(f"Error {exc} occured")
             return False
 
-    def show_members(self):
-
-        plt.figure(figsize=(10, 15))
-        for group, config in self.feature_space.items():
-
-            ix = list(self.feature_space.keys()).index(group)
-            plt.subplot(len(list(self.feature_space.keys())), 1, ix+1)
-
-            for category, values in config.memberships.items():
-                plt.plot(values["coordinates"]["x"], values["coordinates"]["y"], label=category)
-
-            plt.title(config.name)
-            plt.xlabel(config.measure)
-            plt.legend()
-
-        plt.tight_layout()
-        plt.show()
-
     def run(self, inputs: dict):
         perception = self._fuzzification(inputs)
         results = self._inference(perception)
         return self._defuzzification(results)
+
+
+#m = Membership()
+#m.fit(accel_crnt, "current acceleration")
+#m.get_membership_degree(3)
+# m.show()
+
+
+ruleset = pd.read_csv("experiment/test_rules.csv", sep=";")
+
+fc = FuzzyDistanceController()
+fc.set_inputs(settings)
+fc.set_ruleset(ruleset)
+fc.set_output(accel, "acceleration")
+# print(fc.run({"accel_crnt": 3, "target_distance": 100, "vel_crnt": 8.6}))
