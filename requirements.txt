@@ -1,2 +1,5 @@
 numpy
 matplotlib
+pandas
+scipy
+shapely

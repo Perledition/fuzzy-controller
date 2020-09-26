@@ -12,7 +12,6 @@ from components.controller.fuzzy import FuzzyDistanceController
 
 
 # define the fuzzy controller configuration
-# ruleset = pd.read_csv("ruleset_fuzzy_distance_controller.csv", index_col=0)
 ruleset = pd.read_csv("test_rules.csv", sep=";")
 print(ruleset.head())
 
