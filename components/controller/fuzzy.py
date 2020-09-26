@@ -6,7 +6,7 @@ from components.controller.membership import Membership
 from matplotlib import pyplot as plt
 
 
-class FuzzyDistanceController(object):
+class FuzzyController(object):
 
     def __init__(self):
 

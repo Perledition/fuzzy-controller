@@ -2,7 +2,7 @@
 The purpose of this repository was to create a working fuzzy-controller from scratch in order to understand how it works, to encounter it's limitations and also to understand what kind of mechanics must or can be used, and in which areas a creator can have some freedom while implementing the algorithm. The controller is written in a generic format and not limited to the validation use case described below. It could be used for a wide range of other use cases as well without additional modifications on the controller itself.
 
 
-## How use the Controller for your own experiment
+## How use the Controller for Your own Experiment
 #### Dependencies
 The project includes a Pipefile with all dependencies required as well as a requirements.txt. The project was written in python 3.7 so make sure you use at least 3.7.*. Libraries used for this project:
 
@@ -67,12 +67,12 @@ fc.run(
 ![car-animation](_meta/use_case_cars.gif)
 
 
-For validation the famous use case of autonomous driving was utilized. Therefore the fuzzy-controller is used to adjust the speed of a following car in order to keep distance to a leading car and to avoid a crash but allow the car to accelerate when it's save to accelerate. The files for the specific experiment can be found the the folder "*experiment*", while the files and the code for the generic fuzzy-controller can be found in "*components/controller*". The main file for the experiment is "*experiment/simple_car_travel.py*".
+For validation the famous use case of autonomous driving was utilized. Therefore the fuzzy-controller is used to adjust the speed of a following car in order to keep distance to a leading car and to avoid a crash but allow the car to accelerate when it's save to accelerate. The files for the specific experiment can be found the the folder "*experiment*", while the files and the code for the generic fuzzy-controller can be found in "*components/controller*". The main file for the experiment is "*experiment/simple_car_travel.py*". All pictures used can be found in "*_meta*"
 
 
 #### Framework
 
-##### Premises for this experiment
+##### Premises for this Experiment
 To concentrate only on the functionality of the fuzzy-controller the following premises do define the overall experiment situation.
 
 - The cars can only move in one direction which is forward. Therefore speed and velocity share the same meaning.

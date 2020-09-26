@@ -2,14 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f724a5af-a7e6-4eca-8f85-989be012560a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/_meta/architecture.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_meta/use_case_cars.gif" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/experiment/experiment.png" beforeDir="false" afterPath="$PROJECT_DIR$/_meta/experiment.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/experiment/groups.png" beforeDir="false" afterPath="$PROJECT_DIR$/_meta/groups.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/car_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/controller/fuzzy.py" beforeDir="false" afterPath="$PROJECT_DIR$/components/controller/fuzzy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/vehicle/bidirectional.py" beforeDir="false" afterPath="$PROJECT_DIR$/components/vehicle/bidirectional.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment/fuzzy-test.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/experiment/simple_car_travel.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment/simple_car_travel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/membership_test.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,7 +196,7 @@
       <workItem from="1599648414083" duration="985000" />
       <workItem from="1599918155133" duration="41000" />
       <workItem from="1600183884186" duration="5267000" />
-      <workItem from="1601119542519" duration="8308000" />
+      <workItem from="1601119542519" duration="13325000" />
     </task>
     <servers />
   </component>
@@ -208,30 +208,30 @@
       <screen x="0" y="40" width="3440" height="1400" />
     </state>
     <state x="1321" y="569" key="FileChooserDialogImpl/0.40.3440.1400@0.40.3440.1400" timestamp="1599918193510" />
-    <state width="1843" height="386" key="GridCell.Tab.0.bottom" timestamp="1600352322451">
-      <screen x="0" y="23" width="3440" height="1363" />
+    <state width="2482" height="416" key="GridCell.Tab.0.bottom" timestamp="1601134530711">
+      <screen x="0" y="40" width="3440" height="1400" />
     </state>
     <state width="1659" height="159" key="GridCell.Tab.0.bottom/0.23.1680.973@0.23.1680.973" timestamp="1595396565784" />
     <state width="1843" height="386" key="GridCell.Tab.0.bottom/0.23.3440.1363@0.23.3440.1363" timestamp="1600352322451" />
-    <state width="2469" height="418" key="GridCell.Tab.0.bottom/0.40.3440.1400@0.40.3440.1400" timestamp="1600189517987" />
-    <state width="1843" height="386" key="GridCell.Tab.0.center" timestamp="1600352322450">
-      <screen x="0" y="23" width="3440" height="1363" />
+    <state width="2482" height="416" key="GridCell.Tab.0.bottom/0.40.3440.1400@0.40.3440.1400" timestamp="1601134530711" />
+    <state width="2482" height="416" key="GridCell.Tab.0.center" timestamp="1601134530711">
+      <screen x="0" y="40" width="3440" height="1400" />
     </state>
     <state width="1659" height="159" key="GridCell.Tab.0.center/0.23.1680.973@0.23.1680.973" timestamp="1595396565784" />
     <state width="1843" height="386" key="GridCell.Tab.0.center/0.23.3440.1363@0.23.3440.1363" timestamp="1600352322450" />
-    <state width="2469" height="418" key="GridCell.Tab.0.center/0.40.3440.1400@0.40.3440.1400" timestamp="1600189517987" />
-    <state width="1843" height="386" key="GridCell.Tab.0.left" timestamp="1600352322450">
-      <screen x="0" y="23" width="3440" height="1363" />
+    <state width="2482" height="416" key="GridCell.Tab.0.center/0.40.3440.1400@0.40.3440.1400" timestamp="1601134530711" />
+    <state width="2482" height="416" key="GridCell.Tab.0.left" timestamp="1601134530711">
+      <screen x="0" y="40" width="3440" height="1400" />
     </state>
     <state width="1659" height="159" key="GridCell.Tab.0.left/0.23.1680.973@0.23.1680.973" timestamp="1595396565784" />
     <state width="1843" height="386" key="GridCell.Tab.0.left/0.23.3440.1363@0.23.3440.1363" timestamp="1600352322450" />
-    <state width="2469" height="418" key="GridCell.Tab.0.left/0.40.3440.1400@0.40.3440.1400" timestamp="1600189517986" />
-    <state width="1843" height="386" key="GridCell.Tab.0.right" timestamp="1600352322450">
-      <screen x="0" y="23" width="3440" height="1363" />
+    <state width="2482" height="416" key="GridCell.Tab.0.left/0.40.3440.1400@0.40.3440.1400" timestamp="1601134530711" />
+    <state width="2482" height="416" key="GridCell.Tab.0.right" timestamp="1601134530711">
+      <screen x="0" y="40" width="3440" height="1400" />
     </state>
     <state width="1659" height="159" key="GridCell.Tab.0.right/0.23.1680.973@0.23.1680.973" timestamp="1595396565784" />
     <state width="1843" height="386" key="GridCell.Tab.0.right/0.23.3440.1363@0.23.3440.1363" timestamp="1600352322450" />
-    <state width="2469" height="418" key="GridCell.Tab.0.right/0.40.3440.1400@0.40.3440.1400" timestamp="1600189517987" />
+    <state width="2482" height="416" key="GridCell.Tab.0.right/0.40.3440.1400@0.40.3440.1400" timestamp="1601134530711" />
     <state width="2088" height="465" key="GridCell.Tab.1.bottom" timestamp="1600248853974">
       <screen x="0" y="23" width="3440" height="1363" />
     </state>
@@ -257,5 +257,8 @@
     </state>
     <state x="1125" y="429" key="SettingsEditor/0.23.3440.1363@0.23.3440.1363" timestamp="1600339389229" />
     <state x="1150" y="392" key="SettingsEditor/0.40.3440.1400@0.40.3440.1400" timestamp="1595414729569" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/fuzzy_controller$simple_car_travel.coverage" NAME="simple_car_travel Coverage Results" MODIFIED="1601134215363" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/experiment" />
   </component>
 </project>
