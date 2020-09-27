@@ -12,14 +12,12 @@ The project includes a Pipefile with all dependencies required as well as a requ
 - scipy
 - shapely
 
-#### Useage
+#### Usage
 
 If you want to use the controller for your own project this would be the structure you should follow:
 ```
 # import project related modules
-from experiment.intervals import accel, settings
-from components.vehicle.bidirectional import SimpleCar
-from components.controller.fuzzy import FuzzyDistanceController
+from components.controller.fuzzy import FuzzyController
 
 
 # define the fuzzy controller configuration
@@ -110,7 +108,7 @@ The experiment is set for a theoretical duration of 60 seconds (1 Minute) and th
 #### Results
 ![fuzzy distance controller results](_meta/experiment.png)
 
-The experiment shows that the controller works quite well within the defined framework and experiment. The following car (orange) does roughly adapt the behavior of the leading car (blue) and breaks in case the distance between the cars is too low. Therefore the experiment and the purpose of the project are full filled. The fuzzy controller itself works quite well and the experiment was a success as well.
+The experiment shows that the controller works quite well within the defined framework and experiment. The following car (orange) does roughly adapt the behavior of the leading car (blue) and breaks in case the distance between the cars is too low. Therefore the experiment and the purpose of the project are full filled. The fuzzy controller itself works quite well and the experiment was a success as well. However, the reaction time seems to be a bit slow. This could be depended on the physics or on the controller configuration. More test could be helpful.
 
 #### Limitations and Further Improvements 
 
@@ -119,4 +117,9 @@ The experiment is mainly used to verify the functionality of the controller itse
 
 
 ###### Controller
-The controller works well for simple scenarios like this one. However, the controller itself is still quite simple and is probably not able to handle each possible edge case. A limitation could also be, that the controller uses the centroid of gravity for a resulting polygon in order to define the absolute output value of one membership (strong negative, negative, zero and so on). This might not be the perfect solution but works at least in the experiment quite well. 
+The controller works well for simple scenarios like this one. However, the controller itself is still quite simple and is probably not able to handle each possible edge case. A limitation could also be, that the controller uses the centroid of gravity for a resulting polygon in order to define the absolute output value of one membership (strong negative, negative, zero and so on). This might not be the perfect solution but works at least in the experiment quite well.
+
+At the moment only triangle definitions for input and output parameters are supported.
+
+In order to make improve or simplify the settings code could be improved in the way, that the user could create a yml file instead of a dict
+for the input and output parameter. 

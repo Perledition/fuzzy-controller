@@ -77,16 +77,16 @@ for s in range(0, 60):
 
     # in case the distance is greater than zero print the second and run the update for the following car
     # otherwise print crash and second and run the update anyways.
-    # the update takes only the current second and the distance between cars, since current velocity and current
+    # the update takes only the distance between cars, since current velocity and current
     # acceleration are defined by the following car itself.
     # for the leading car no update is needed since we handed over the route at initialization and the complete
     # route and the behavior was pre calculated.
     if dis_lead_to_follow > 0:
         print("second: ", s)
-        cf.update(dis_lead_to_follow, s)
+        cf.update(dis_lead_to_follow)
     else:
         print("crash in sec: ", s)
-        cf.update(dis_lead_to_follow, s)
+        cf.update(dis_lead_to_follow)
 
     print("")
 
