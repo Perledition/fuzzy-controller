@@ -47,7 +47,7 @@ settings = {
 }
 
 # set fuzzy controller which will be used by the following car
-fc = FuzzyDistanceController()
+fc = FuzzyController()
 fc.set_inputs(settings)
 fc.set_ruleset(ruleset)
 fc.set_output(output, "name_of_output")
