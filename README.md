@@ -1,5 +1,5 @@
 # Fuzzy-Controller
-The purpose of this repository was to create a working fuzzy-controller from scratch in order to understand how it works, to encounter it's limitations and also to understand what kind of mechanics must or can be used, and in which areas a creator can have some freedom while implementing the algorithm. The controller is written in a generic format and not limited to the validation use case described below. It could be used for a wide range of other use cases as well without additional modifications on the controller itself.
+The purpose of this repository was to create a working fuzzy-controller from scratch in order to understand how it works, to encounter it's limitations and also to understand what kind of mechanics must or can be used. Also it was a learning process to find out in which areas a creator can have some freedom while implementing the algorithm. The controller is written in a generic format and is not limited to the validation use case described below. It could be used for a wide range of other use cases as well without additional modifications on the controller itself.
 
 
 ## How use the Controller for Your own Experiment
@@ -14,7 +14,7 @@ The project includes a Pipefile with all dependencies required as well as a requ
 
 #### Usage
 
-If you want to use the controller for your own project this would be the structure you should follow:
+If you want to use the controller for your own project, this would be the structure you should follow:
 ```
 # import project related modules
 from components.controller.fuzzy import FuzzyController
@@ -71,7 +71,7 @@ For validation the famous use case of autonomous driving was utilized. Therefore
 #### Framework
 
 ##### Premises for this Experiment
-To concentrate only on the functionality of the fuzzy-controller the following premises do define the overall experiment situation.
+To concentrate only on the functionality of the fuzzy-controller the following premises do define the overall experiment situation:
 
 - The cars can only move in one direction which is forward. Therefore speed and velocity share the same meaning.
 - only two cars do drive on one road and other objects or events can be ignored.
@@ -108,7 +108,7 @@ The experiment is set for a theoretical duration of 60 seconds (1 Minute) and th
 #### Results
 ![fuzzy distance controller results](_meta/experiment.png)
 
-The experiment shows that the controller works quite well within the defined framework and experiment. The following car (orange) does roughly adapt the behavior of the leading car (blue) and breaks in case the distance between the cars is too low. Therefore the experiment and the purpose of the project are full filled. The fuzzy controller itself works quite well and the experiment was a success as well. However, the reaction time seems to be a bit slow. This could be depended on the physics or on the controller configuration. More test could be helpful.
+The experiment shows that the controller works quite well within the defined framework and experiment. The following car (orange) does roughly adapt the behavior of the leading car (blue) and breaks in case the distance between the cars is too low. Therefore the experiment and the purpose of the project are full filled. The fuzzy controller itself works quite well and the experiment was a success as well. However, the reaction time seems to be a bit slow. This could be depended on the physics or on the controller configuration. More tests could be helpful.
 
 #### Limitations and Further Improvements 
 
@@ -121,5 +121,5 @@ The controller works well for simple scenarios like this one. However, the contr
 
 At the moment only triangle definitions for input and output parameters are supported.
 
-In order to make improve or simplify the settings code could be improved in the way, that the user could create a yml file instead of a dict
+In order to improve or simplify the settings, the code could be improved in the way, that the user could create a yml file instead of a dict
 for the input and output parameter. 
