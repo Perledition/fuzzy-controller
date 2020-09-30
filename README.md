@@ -2,7 +2,7 @@
 The purpose of this repository was to create a working fuzzy-controller from scratch in order to understand how it works, to encounter it's limitations and also to understand what kind of mechanics must or can be used. Also it was a learning process to find out in which areas a creator can have some freedom while implementing the algorithm. The controller is written in a generic format and is not limited to the validation use case described below. It could be used for a wide range of other use cases as well without additional modifications on the controller itself.
 
 
-## How use the Controller for Your own Experiment
+## How to use the Controller for Your own Experiment
 #### Dependencies
 The project includes a Pipefile with all dependencies required as well as a requirements.txt. The project was written in python 3.7 so make sure you use at least 3.7.*. Libraries used for this project:
 
